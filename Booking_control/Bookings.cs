@@ -21,7 +21,7 @@
             if (CheckSeats(NumSeat).avaiable)
             {
                 string seatBooked = "";
-                for (int i = 0, j = NumSeat; i < SeatNumber; i++)
+                for (int i = 0, j = NumSeat; i < SeatOccuped.Length; i++)
                 {
                     if (SeatOccuped[i] == null && j > 0)
                     {
@@ -40,9 +40,8 @@
 
         public (int Seat, bool avaiable, string message) CheckSeats(int NumSeat)
         {
-            string message = "Sorry, the seat: " + NumSeat + ". It's not avaiable." + "You must booking for maximum " + GroupMax;
+            string message = "Sorry, the seat: " + NumSeat + ". It's not avaiable." + "You must booking for maximum " + (GroupMax >= SeatAvaiable ? GroupMax : SeatAvaiable);
 
-            //Console.WriteLine(SeatAvaiable);
             if (NumSeat <= GroupMax && NumSeat <= SeatAvaiable)
             {
                 SeatAvaiable = 0;
@@ -51,7 +50,6 @@
                 {
                     if (Seat == null)
                     {
-                        Console.WriteLine(SeatAvaiable);
                         SeatAvaiable++;
                     }
                 }
